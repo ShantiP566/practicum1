@@ -18,6 +18,6 @@ kubectl apply -f "$TMP_FILE"
 rm "$TMP_FILE"
 
 kubectl create secret generic postgres-primes-secrets \
-  --from-literal=DATASOURCE_URL="jdbc:postgresql://your-db-host:5432/primes" \
-  --from-literal=DATASOURCE_USERNAME="admin2024" \
-  --from-literal=DATASOURCE_PASSWORD="p4662024!"
+  --from-literal=DATASOURCE_URL="jdbc:postgresql://p466-postgres-server.postgres.database.azure.com:5432/primes?sslmode=require" \
+  --from-literal=DATASOURCE_USERNAME="admin410" \
+  --from-literal=DATASOURCE_PASSWORD="p466password321!"
