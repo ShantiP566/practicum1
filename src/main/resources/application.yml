@@ -1,8 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5001/primes
-    username : postgres
-    password : password
+    url: ${DATASOURCE_URL}
+    username : ${DATASOURCE_USERNAME}
+    password : ${DATASOURCE_PASSWORD}
+
+  devtools:
+    restart:
+      poll-interval: 2s
 
   jpa:
     hibernate:
@@ -12,6 +16,13 @@ spring:
   sql:
     init:
       mode: always
+      continue-on-error: true
+
+  rabbitmq:
+    host: localhost
+    port: 5003
+    username: guest
+    password: guest
 
 server:
   port: 8085
