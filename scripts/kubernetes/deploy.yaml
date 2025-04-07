@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: prime-service
-          image: ${CONTAINER_REGISTRY}/prime-service:${VERSION}
+          image: $CONTAINER_REGISTRY/prime-service:$VERSION
           imagePullPolicy: Always
           envFrom:
             - secretRef:
@@ -26,6 +26,7 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+
 ---
 apiVersion: v1
 kind: Service
@@ -46,6 +47,6 @@ kind: Secret
 metadata:
   name: postgres-primes-secrets
 stringData:
-  DATASOURCE_PASSWORD: ${DATASOURCE_PW}
-  DATASOURCE_USERNAME: ${DATASOURCE_UN}
-  DATASOURCE_URL: ${DATASOURCE_URL}
+  DATASOURCE_PASSWORD: $DATASOURCE_PW
+  DATASOURCE_USERNAME: $DATASOURCE_UN
+  DATASOURCE_URL: $DATASOURCE_URL
