@@ -5,4 +5,14 @@ set -u # or set -o nounset
 : "$DATASOURCE_UN"
 : "$DATASOURCE_PW"
 
-envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
+# Create a temporary file for the processed YAML
+TMP_FILE=$(mktemp)
+
+# Process the YAML file with environment variable substitution
+envsubst < ./scripts/kubernetes/deploy.yaml > "$TMP_FILE"
+
+# Apply the processed YAML
+kubectl apply -f "$TMP_FILE"
+
+# Clean up
+rm "$TMP_FILE"
